@@ -1,17 +1,15 @@
 import { NextFunction, Request, Response } from 'express';
-/* import { CreateUserDto } from '@dtos/users.dto';
-import { User } from '@interfaces/users.interface'; */
-/* import userService from '@services/users.service'; */
+import mapsService from '@services/maps.service';
+import { mapsResultSchema } from '@interfaces/maps.interface';
 
 class MapsController {
-  /* public userService = new userService(); */
+  public mapsService = new mapsService();
 
   public getPlaces = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      /*   const findAllUsersData: User[] = await this.userService.findAllUser();
-       */
+      const getPlacesService: mapsResultSchema = await this.mapsService.placeTextSearch(req.body.text_query);
 
-      res.status(200).json({ data: 'data', message: 'findAll' });
+      res.status(200).json(getPlacesService);
     } catch (error) {
       next(error);
     }

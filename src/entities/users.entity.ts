@@ -13,7 +13,6 @@ export class UserEntity extends BaseEntity implements User {
   email: string;
 
   @Column()
-  @IsNotEmpty()
   password: string;
 
   @Column()
@@ -23,4 +22,8 @@ export class UserEntity extends BaseEntity implements User {
   @Column()
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @Column({ type: 'int', default: 0 })
+  @IsNotEmpty()
+  tier: number;
 }

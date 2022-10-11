@@ -1,9 +1,7 @@
 import { Router } from 'express';
 import MapsController from '@controllers/maps.controller';
-/* import { CreateUserDto } from '@dtos/users.dto'; */
 import { Routes } from '@interfaces/routes.interface';
-/* import authMiddleware from '@middlewares/auth.middleware'; */
-/* import validationMiddleware from '@middlewares/validation.middleware'; */
+import gAuthMiddleware from '@middlewares/gAuth.middleware';
 
 class MapsRoute implements Routes {
   public path = '/api/maps/';
@@ -15,8 +13,8 @@ class MapsRoute implements Routes {
   }
 
   private initializeRoutes() {
-    //middleware authMiddleware
-    this.router.post(`${this.path}getPlaces`, this.mapsController.getPlaces);
+    //controllo pagamento e aggiungo chiamate al totale chiamate fatte con middleware
+    this.router.post(`${this.path}getPlaces`, gAuthMiddleware, this.mapsController.getPlaces);
   }
 }
 
