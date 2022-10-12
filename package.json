@@ -1,5 +1,5 @@
 {
-  "name": "maps_scraper_backend",
+  "name": "maps2sheets",
   "version": "0.0.0",
   "description": "TypeScript + TypeORM + PostgreSQL + Express API Server",
   "author": "",
