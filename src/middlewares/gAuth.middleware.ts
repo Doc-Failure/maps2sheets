@@ -21,7 +21,7 @@ const gAuthMiddleware = async (req: RequestWithUser, res: Response, next: NextFu
     req.user = findUser;
     next();
   } catch (error) {
-    next(new HttpException(401, 'Wrong authentication token'));
+    next(error);
   }
 };
 
